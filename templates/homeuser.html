@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 300px;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p.login {
+            text-align: center;
+            color: #666;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #333;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #444;
+        }
+        a.logout-link {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Home Page</h1>
+        <p class="login">Hello, {{.username}}</p> <!-- Use the dynamic Username variable -->
+        <button>
+            <a href="/logout" class="logout-link">Log Out</a>
+        </button>
+    </div>
+
+    <script>
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1); 
+        };
+    </script>
+</body>
+</html>

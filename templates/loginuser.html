@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login Page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <style>
+            
+            .error-container {
+                color: #f44336;
+                font-size: 14px;
+            }
+
+            body {
+                background-color: #f0f0f0; /* Set a light background color for the entire page */
+            }
+
+            .card {
+                background-color: #ffffff; /* Set a white background color for the card */
+                border: 2px solid #3498db; /* Add a border with a blue color */
+                border-radius: 10px; /* Add rounded corners to the card */
+            }
+
+            .card-header {
+                background-color: #3498db; /* Set a blue background color for the header */
+                color: #ffffff; /* Set white text color for the header */
+                text-align: center;
+            }
+
+            .card-body {
+                padding: 20px;
+            }
+
+            .form-group label {
+                color: #333; /* Set a dark text color for labels */
+            }
+
+            .btn-primary {
+                background-color: #3498db; /* Set a blue background color for primary buttons */
+                border-color: #3498db; /* Set a blue border color for primary buttons */
+            }
+
+            .btn-primary:hover {
+                background-color: #2980b9; /* Darken the blue color on hover */
+                border-color: #2980b9;
+            }
+
+            .btn-secondary {
+                background-color: #e74c3c; /* Set a red background color for secondary buttons */
+                border-color: #e74c3c; /* Set a red border color for secondary buttons */
+            }
+
+            .btn-secondary:hover {
+                background-color: #c0392b; /* Darken the red color on hover */
+                border-color: #c0392b;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">User Log In</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="/gethome" method="post">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" required />
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                            </form>
+                            <hr />
+                            <p class="text-center">Login as:</p>
+                            <a href="/loginadmin" class="btn btn-secondary btn-block">Admin</a>
+                        </div>
+                        <div class="card-footer text-center">Don't have an account? <a href="/signup">Sign Up</a></div>
+                        <div class="error-container">{{.message}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            history.pushState(null, null, location.href);
+            window.onpopstate = function () {
+                history.go(1);
+            };
+        </script>
+    </body>
+</html>
