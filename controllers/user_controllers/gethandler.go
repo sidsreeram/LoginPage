@@ -2,6 +2,7 @@ package usercontrollers
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -20,6 +21,7 @@ func LogoutGetHandler(ctx *gin.Context) {
 	ctx.Redirect(http.StatusPermanentRedirect, "/login")
 }
 func HomeGetHandler(ctx *gin.Context) {
+	log.Println("Homelander1")
 	defer func() {
 		if r := recover(); r != nil {
 			fmt.Println("An error occurred:", r)

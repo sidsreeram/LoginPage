@@ -9,6 +9,8 @@ import (
 	adminmiddlewares "project1/middlewares/admin_middlewares"
 	usermiddlewares "project1/middlewares/user_middlewares"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -46,6 +48,9 @@ func InitGin() *gin.Engine {
 		ctx.Header("Expires", "0")
 		ctx.Next()
 	})
+	store := cookie.NewStore([]byte("Big_secret"))
+	router.Use(sessions.Sessions("myownsession", store))
+
 	router.GET("/", usermiddlewares.SecureHome(), usercontrollers.LoginGetHandler)          // Home for users
 	router.GET("/login", usermiddlewares.ClearCache(), usercontrollers.LoginGetHandler)     // User login page
 	router.GET("/signup", usercontrollers.SignUpGetHandler)                             // User signup page
